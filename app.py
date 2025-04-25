@@ -5,6 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 import re
 import os
 from dotenv import load_dotenv
+from pydantic import BaseModel
+from langChain_chat_model import get_chat_response
+
 load_dotenv()
 
 LANGFLOW_TOKEN = os.getenv("LANGFLOW_TOKEN")
@@ -55,3 +58,12 @@ async def run_langflow(request: Request):
             "error": "Request to Langflow failed",
             "details": str(exc)
         })
+
+
+class ChatRequest(BaseModel):
+    input_value: str
+
+@app.post("/langChain")
+async def chat_endpoint(chat_req: ChatRequest):
+    reply = get_chat_response(chat_req.input_value)
+    return {"response": reply}
