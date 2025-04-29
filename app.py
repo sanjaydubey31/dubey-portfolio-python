@@ -67,3 +67,4 @@ class ChatRequest(BaseModel):
 async def chat_endpoint(chat_req: ChatRequest):
     reply = get_chat_response(chat_req.input_value)
     return {"response": reply}
+
