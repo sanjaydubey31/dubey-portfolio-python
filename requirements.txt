@@ -12,3 +12,4 @@ openai  # or your LLM provider (Ollama, etc.)
 bs4
 requests
 pypdf
+chromadb
