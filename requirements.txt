@@ -13,3 +13,5 @@ bs4
 requests
 pypdf
 chromadb
+tavily-python 
+tiktoken
